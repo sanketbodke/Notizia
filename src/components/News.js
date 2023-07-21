@@ -1,43 +1,53 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
+import { useQuery } from "@tanstack/react-query";
 import Axios from "axios";
+import LoadingAnimation from "./LoadingAnimation";
 
-const News = () => {
-  const [articles, setArticles] = useState([]);
-  const [error, setError] = useState(null);
+export default function News(props) {
+  const {
+    data: news,
+    isLoading,
+    isError,
+    refetch, 
+  } = useQuery(
+    ["news", props.category], 
+    () => {
+      return Axios.get(
+        `https://newsapi.org/v2/top-headnes?category=${props.category}&country=in&apiKey=0a896ee86f6b404b8a695b5e43449f30`
+      ).then((resp) => resp);
+    }
+  );
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await Axios.get(
-          "https://newsapi.org/v2/top-headlines?country=us&apiKey=de5e89cbe76c436b8202a8a115b9b9ae"
-        );
-        setArticles(response.data.articles);
-      } catch (error) {
-        setError("Error fetching news articles. Please try again later.");
-      }
-    };
+    refetch();
+  }, [props.category, refetch]);
 
-    fetchData();
-  }, []);
+  if (isLoading) {
+    return <LoadingAnimation />;
+  }
+
+  if (isError) {
+    return <LoadingAnimation />;
+  }
 
   return (
     <div className="article_container">
-      {error && <p>{error}</p>}
-      {articles.map((article, index) => (
+      {news.data.articles.map((article, index) => (
         <div key={index} className="article">
-          <div className="article_img">
-            <img src={article.urlToImage} alt={article.title} />
-          </div>
-          <div className="article_info">
-            <p>{article.author}</p>
-            <p>{article.content}</p>
-            <p>{article.publishedAt}</p>
-            <a href={article.url}>Read More</a>
-          </div>
+          <a href={article.url} target="_blank" rel="noopener noreferrer">
+            <div className="article_img">
+              <img src={article.urlToImage} alt={article.title} />
+            </div>
+            <div className="article_info">
+              <p>{article.title}</p>
+              <p>{article.content && article.content.slice(0, 200)}</p>
+              <p>
+                {article.author} - {article.publishedAt}
+              </p>
+            </div>
+          </a>
         </div>
       ))}
     </div>
   );
-};
-
-export default News;
+}
