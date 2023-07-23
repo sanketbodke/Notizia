@@ -1,0 +1,18 @@
+.errorContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    min-height: 100vh;
+}
+
+.errorContainer .icon {
+    font-size: 28px;
+}
+
+.errorContainer .errorTitle p {
+    font-size: 18px;
+    font-weight: 500;
+    padding: 7px 0;
+}

@@ -1,0 +1,12 @@
+.loading_animation_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.loading_animation {
+    margin-top: 200px;
+    width: 350px;
+}
