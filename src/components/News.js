@@ -50,7 +50,7 @@ export default function News(props) {
               <img src={article.urlToImage} alt={article.title} />
             </div>
             <div className="article_info">
-            <p>{article.author} - {article.publishedAt}</p>
+              <p>{article.author} - {article.publishedAt}</p>
               <p>{article.title}</p>
               <p>{article.content && article.content.slice(0, 200)}</p>
             </div>
