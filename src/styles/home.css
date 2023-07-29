@@ -1,0 +1,22 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #e9e9e9;
+}
+
+.home_container {
+    background: #fff;
+    margin: 120px 0;
+    padding: 50px 60px;
+}
+
+.home_container .title_and_time {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}

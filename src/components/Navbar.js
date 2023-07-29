@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import home from "../pages/home";
 import {
   BrowserRouter as Router,
   Routes,
@@ -52,8 +53,7 @@ const Navbar = () => {
             </div>
           </div>
           <Routes>
-          <Route path="/" element={<NewsComponent  />} />
-            <Route path="/:category" element={<NewsComponent />} />
+            <Route path="/" Component={home}></Route>
           </Routes>
         </Router>
     </div>
@@ -61,12 +61,7 @@ const Navbar = () => {
 };
 
 const NewsComponent = () => {
-  const { category } = useParams();
-  const selectedCategory = category;
-  useEffect(() => {
-  }, [selectedCategory]);
-
-  return <News category={selectedCategory} />;
+  return <News category={'general'} />;
 };
 
 export default Navbar;
