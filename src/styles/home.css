@@ -20,3 +20,22 @@ body {
     align-items: center;
     margin-bottom: 20px;
 }
+
+.home_container .headline_news {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.home_container .headline_news .news {
+    width: 400px;
+}
+
+.home_container .headline_news img {
+    width: 400px;
+    height: 250px;
+}
+
+.home_container .headline_news h2 {
+    font-size: 20px;
+}
