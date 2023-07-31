@@ -74,15 +74,17 @@ export default function Home() {
         </div>
         <div className="headline_news">
           {news.articles.slice(0, 6).map((article) => (
-            <div className="news" key={article.title}>
+            <a href={article.url} target="_blank" rel="noopener noreferrer">
+              <div className="news" key={article.title}>
               <img src={article.urlToImage} />
               <h2>{article.title}</h2>
               <p>{article.description}</p>
             </div>
+            </a>
           ))}
         </div>
       </div>
-      <div className="weather_data_container">
+      {/* <div className="weather_data_container">
         <div className="weather_data">
           {console.log(weather.data.current)}
           {weather.isSuccess &&
@@ -95,7 +97,7 @@ export default function Home() {
             <p>No weather data available</p>
           )}
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

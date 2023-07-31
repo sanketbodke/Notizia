@@ -1,24 +1,37 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import home from "../pages/home";
+import News from "./News";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
+import $ from "jquery"; 
+
 import {
   BrowserRouter as Router,
   Routes,
   Route,
   Link,
-  useParams,
 } from "react-router-dom";
-import News from "./News";
+
 import "../styles/Navbar.css";
 
 
 const Navbar = () => {
-  // const [userInput, handleUserInput] = useState("");
-  // const navigate = useNavigate();
+  const [userInput, handleUserInput] = useState("");
 
   const handleInput = (event)=>{
-    console.log(event.target.value)
+    handleUserInput(event.target.value);
   }
+
+  const searchNews = ()=>{
+
+  }
+
+  useEffect(() => {
+    $('.hamburger').click(() => {
+      $('.responsive_menu_items').css('transform', 'translateX(0%)');
+    });
+  }, []);
+  
 
   return (
     <div>
@@ -47,21 +60,46 @@ const Navbar = () => {
                 <li>Health</li>
               </Link>
             </div>
+            <div className="responsive_menu_items">
+              <Link to="/general">
+                <li>General</li>
+              </Link>
+              <Link to="/sports">
+                <li>Sports</li>
+              </Link>
+              <Link to="/business">
+                <li>Business</li>
+              </Link>
+              <Link to="/technology">
+                <li>Technology</li>
+              </Link>
+              <Link to="/entertainment">
+                <li>Entertainment</li>
+              </Link>
+              <Link to="/health">
+                <li>Health</li>
+              </Link>
+            </div>
             <div className="search">
               <input type={"text"} placeholder={"type..."} onChange={handleInput}/>
-              <button>Search</button>
+              <button onClick={searchNews}>Search</button>
+            </div>
+            <div className="hamburger">
+            <FontAwesomeIcon icon={faBars} />
             </div>
           </div>
           <Routes>
             <Route path="/" Component={home}></Route>
+            <Route path="/general" element={<News category="general" />} />
+            <Route path="/sports" element={<News category="sports" />} />
+            <Route path="/business" element={<News category="business" />} />
+            <Route path="/technology" element={<News category="technology" />} />
+            <Route path="/entertainment" element={<News category="entertainment" />} />
+            <Route path="/health" element={<News category="health" />} />
           </Routes>
         </Router>
     </div>
   );
-};
-
-const NewsComponent = () => {
-  return <News category={'general'} />;
 };
 
 export default Navbar;
