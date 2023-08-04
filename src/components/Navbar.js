@@ -3,7 +3,6 @@ import home from "../pages/home";
 import News from "./News";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
-import $ from "jquery"; 
 
 import {
   BrowserRouter as Router,
@@ -17,20 +16,20 @@ import "../styles/Navbar.css";
 
 const Navbar = () => {
   const [userInput, handleUserInput] = useState("");
+  const [hamburger, setHamburger] = useState(false)
 
   const handleInput = (event)=>{
     handleUserInput(event.target.value);
   }
 
   const searchNews = ()=>{
-
+    return <News category={userInput}/>
   }
 
   useEffect(() => {
-    $('.hamburger').click(() => {
-      $('.responsive_menu_items').css('transform', 'translateX(0%)');
-    });
+    
   }, []);
+  
   
 
   return (

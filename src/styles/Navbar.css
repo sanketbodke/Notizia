@@ -56,7 +56,7 @@
 }
 
 .hamburger {
-    display: block;
+    display: none;
 }
 
 @media (max-width: 500px) {
@@ -83,7 +83,7 @@
         width: 330px;
     }
     .home_container .headline_news img {
-        width: 100%;
+        width: 330px;
     }
     .responsive_menu_items {
         display: flex;
