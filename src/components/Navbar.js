@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import home from "../pages/home";
 import News from "./News";
+import Weather from "../pages/weather";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 
@@ -37,7 +38,7 @@ const Navbar = () => {
         <Router>
           <div className="nav_container">
             <div className="logo">
-              <h1>News Of India</h1>
+              <h1>Notizia</h1>
             </div>
             <div className="menu_items">
               <Link to="/general">
@@ -57,6 +58,9 @@ const Navbar = () => {
               </Link>
               <Link to="/health">
                 <li>Health</li>
+              </Link>
+              <Link to="/Weather">
+                <li>Weather</li>
               </Link>
             </div>
             <div className="responsive_menu_items">
@@ -78,6 +82,9 @@ const Navbar = () => {
               <Link to="/health">
                 <li>Health</li>
               </Link>
+              <Link to="/Weather">
+                <li>Weather</li>
+              </Link>
             </div>
             <div className="search">
               <input type={"text"} placeholder={"type..."} onChange={handleInput}/>
@@ -95,6 +102,7 @@ const Navbar = () => {
             <Route path="/technology" element={<News category="technology" />} />
             <Route path="/entertainment" element={<News category="entertainment" />} />
             <Route path="/health" element={<News category="health" />} />
+            <Route path="/weather" element={<Weather />} />
           </Routes>
         </Router>
     </div>

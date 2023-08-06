@@ -1,6 +1,9 @@
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import Axios from "axios";
+import LoadingAnimation from "../components/LoadingAnimation";
+import ErrorPage from "../components/ErrorPage";
+
 import "../styles/home.css";
 
 export default function Home() {
@@ -47,23 +50,27 @@ export default function Home() {
     ).then((resp) => resp.data);
   });
 
-  const { data: weather } = useQuery(["weather"], () => {
-    return Axios.get(
-      "https://api.weatherapi.com/v1/current.json?key=86aaaa25ef0c42ab95b143445233007&q=India&aqi=yes"
-    ).then((resp) => resp);
-  });
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return (
+      <>
+        <LoadingAnimation />
+      </>
+    );
   }
 
   if (isError) {
-    return <div>Error fetching data</div>;
+    return (
+      <>
+        <ErrorPage />
+      </>
+    );
   }
 
   const articlesWithImage = news.articles.filter(
     (article) => article.urlToImage
   );
+
 
   return (
     <div className="home_container">
@@ -76,28 +83,14 @@ export default function Home() {
           {news.articles.slice(0, 6).map((article) => (
             <a href={article.url} target="_blank" rel="noopener noreferrer">
               <div className="news" key={article.title}>
-              <img src={article.urlToImage} />
-              <h2>{article.title}</h2>
-              <p>{article.description}</p>
-            </div>
+                <img src={article.urlToImage} />
+                <h2>{article.title}</h2>
+                <p>{article.description}</p>
+              </div>
             </a>
           ))}
         </div>
       </div>
-      {/* <div className="weather_data_container">
-        <div className="weather_data">
-          {console.log(weather.data.current)}
-          {weather.isSuccess &&
-          weather?.data?.current &&
-          Array.isArray(weather.data.current) ? (
-            weather.data.current.map((weatherD, index) => (
-              <p key={index}>{weatherD.temp_f}</p>
-            ))
-          ) : (
-            <p>No weather data available</p>
-          )}
-        </div>
-      </div> */}
     </div>
   );
 }

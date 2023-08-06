@@ -1,0 +1,54 @@
+.weather_data_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.weather_data_container .weather_data {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 10px 30px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+.weather_data_container img {
+    width: 180px;
+}
+
+.weather_data_container .weather_search {
+    margin-top: 25px;
+    margin-bottom: 45px;
+}
+
+.weather_data_container .weather_search input {
+    padding: 7px;
+    width: 200px;
+    border-radius: 2px;
+    outline: none;
+    border: 1px solid #00000065;
+}
+
+.weather_data_container .weather_search button {
+    outline: none;
+    border: none;
+    background: #000;
+    color: #fff;
+    padding: 7px 15px;
+    border-radius: 2px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.weather_data_container .weather_search button:hover {
+    background: #000000d3;
+}
+
+.weather_data_container .weather_info {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
