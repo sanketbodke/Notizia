@@ -1,0 +1,12 @@
+.weatherLoadingContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    z-index: 1000;
+}
+
+.weatherLoadingContainer img {
+    width: 350px;
+    border-radius: 10px;
+}

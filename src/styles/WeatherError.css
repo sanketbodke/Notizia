@@ -1,0 +1,13 @@
+.WeatherErrorContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+    z-index: 1000;
+}
+
+.WeatherErrorContainer img {
+    width: 350px;
+    border-radius: 10px;
+}
