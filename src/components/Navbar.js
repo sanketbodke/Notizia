@@ -1,40 +1,35 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, createContext } from "react";
 import home from "../pages/home";
 import News from "./News";
 import Weather from "../pages/weather";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Link,
-} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 import "../styles/Navbar.css";
 
+export const AppContext = createContext();
 
 const Navbar = () => {
   const [userInput, handleUserInput] = useState("");
-  const [hamburger, setHamburger] = useState(false)
+  const [hamburger, setHamburger] = useState(false);
 
-  const handleInput = (event)=>{
+  const handleInput = (event) => {
     handleUserInput(event.target.value);
-  }
+  };
 
-  const searchNews = ()=>{
-    return <News category={userInput}/>
-  }
+  const handleUserSearch = () => {
+    return <News category={userInput} />;
+  };
 
-  useEffect(() => {
-    
-  }, []);
-  
-  
+  const searchNews = () => {
+    return <News category={userInput} />;
+  };
 
   return (
     <div>
+      <AppContext.Provider value={{userInput, handleUserInput}}>
         <Router>
           <div className="nav_container">
             <div className="logo">
@@ -85,13 +80,20 @@ const Navbar = () => {
               <Link to="/Weather">
                 <li>Weather</li>
               </Link>
+              <Link to={userInput}>
+                <li>Weather</li>
+              </Link>
             </div>
             <div className="search">
-              <input type={"text"} placeholder={"type..."} onChange={handleInput}/>
-              <button onClick={searchNews}>Search</button>
+              <input
+                type={"text"}
+                placeholder={"type..."}
+                onChange={handleInput}
+              />
+              <button onClick={handleUserSearch}>Search</button>
             </div>
             <div className="hamburger">
-            <FontAwesomeIcon icon={faBars} />
+              <FontAwesomeIcon icon={faBars} />
             </div>
           </div>
           <Routes>
@@ -99,12 +101,20 @@ const Navbar = () => {
             <Route path="/general" element={<News category="general" />} />
             <Route path="/sports" element={<News category="sports" />} />
             <Route path="/business" element={<News category="business" />} />
-            <Route path="/technology" element={<News category="technology" />} />
-            <Route path="/entertainment" element={<News category="entertainment" />} />
+            <Route
+              path="/technology"
+              element={<News category="technology" />}
+            />
+            <Route
+              path="/entertainment"
+              element={<News category="entertainment" />}
+            />
             <Route path="/health" element={<News category="health" />} />
             <Route path="/weather" element={<Weather />} />
+            <Route path={userInput} element={<News category={userInput} />} />
           </Routes>
         </Router>
+      </AppContext.Provider>
     </div>
   );
 };
