@@ -67,16 +67,16 @@ export default function Home() {
     );
   }
 
-  const articlesWithImage = news.articles.filter(
-    (article) => article.urlToImage
-  );
+  // const articlesWithImage = news.articles.filter(
+  //   (article) => article.urlToImage
+  // );
 
 
   return (
     <div className="home_container">
       <div className="headline">
         <div className="title_and_time">
-          <p>Welcome to NewsOfIndia.com</p>
+          <p>Welcome to Notizia</p>
           <p>{`${currentDayName}, ${date} ${monthName}`}</p>
         </div>
         <div className="headline_news">

@@ -1,9 +1,10 @@
-import React, { useContext, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import Axios from "axios";
 import LoadingAnimation from "./LoadingAnimation";
 import ErrorPage from "./ErrorPage";
 import "../styles/News.css";
+import { data } from "jquery";
 
 export default function News(props) {
   const {
@@ -42,6 +43,7 @@ export default function News(props) {
 
   return (
     <div className="article_container">
+      {console.log(data)}
       {articlesWithImage.map((article, index) => (
         <div key={index} className="article">
           <a href={article.url} target="_blank" rel="noopener noreferrer">

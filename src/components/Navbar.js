@@ -1,4 +1,4 @@
-import React, { useEffect, useState, createContext } from "react";
+import React, { useState, createContext } from "react";
 import home from "../pages/home";
 import News from "./News";
 import Weather from "../pages/weather";
@@ -7,29 +7,26 @@ import { faBars } from "@fortawesome/free-solid-svg-icons";
 
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
+import NewsSearch from "./NewsSearch";
 import "../styles/Navbar.css";
 
 export const AppContext = createContext();
 
 const Navbar = () => {
   const [userInput, handleUserInput] = useState("");
-  const [hamburger, setHamburger] = useState(false);
+  // const [hamburger, setHamburger] = useState(false);
 
   const handleInput = (event) => {
     handleUserInput(event.target.value);
   };
 
   const handleUserSearch = () => {
-    return <News category={userInput} />;
+    window.location.href = `/${userInput}`;
   };
 
-  const searchNews = () => {
-    return <News category={userInput} />;
-  };
 
   return (
     <div>
-      <AppContext.Provider value={{userInput, handleUserInput}}>
         <Router>
           <div className="nav_container">
             <div className="logo">
@@ -58,36 +55,10 @@ const Navbar = () => {
                 <li>Weather</li>
               </Link>
             </div>
-            <div className="responsive_menu_items">
-              <Link to="/general">
-                <li>General</li>
-              </Link>
-              <Link to="/sports">
-                <li>Sports</li>
-              </Link>
-              <Link to="/business">
-                <li>Business</li>
-              </Link>
-              <Link to="/technology">
-                <li>Technology</li>
-              </Link>
-              <Link to="/entertainment">
-                <li>Entertainment</li>
-              </Link>
-              <Link to="/health">
-                <li>Health</li>
-              </Link>
-              <Link to="/Weather">
-                <li>Weather</li>
-              </Link>
-              <Link to={userInput}>
-                <li>Weather</li>
-              </Link>
-            </div>
             <div className="search">
               <input
                 type={"text"}
-                placeholder={"type..."}
+                placeholder={"Search Category"}
                 onChange={handleInput}
               />
               <button onClick={handleUserSearch}>Search</button>
@@ -110,11 +81,11 @@ const Navbar = () => {
               element={<News category="entertainment" />}
             />
             <Route path="/health" element={<News category="health" />} />
+            <Route path="/:query" element={<NewsSearch />} />
             <Route path="/weather" element={<Weather />} />
             <Route path={userInput} element={<News category={userInput} />} />
           </Routes>
         </Router>
-      </AppContext.Provider>
     </div>
   );
 };

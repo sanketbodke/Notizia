@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <div className='footerContainer'>
       <div className="footer_text">
-        <p>News Of India &copy; All Rights Reserved</p>
+        <p>Notizia &copy; All Rights Reserved</p>
       </div>
     </div>
   )
