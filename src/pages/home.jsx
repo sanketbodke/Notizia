@@ -83,7 +83,7 @@ export default function Home() {
           {news.articles.slice(0, 6).map((article) => (
             <a href={article.url} target="_blank" rel="noopener noreferrer">
               <div className="news" key={article.title}>
-                <img src={article.urlToImage} />
+                <img src={article.urlToImage} alt="img"/>
                 <h2>{article.title}</h2>
                 <p>{article.description}</p>
               </div>

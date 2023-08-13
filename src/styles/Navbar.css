@@ -100,9 +100,6 @@
         width: 230px;
         transition: all .3s;
     }
-    .responsive_menu_items {
-        transform: translateX(150%);
-    }
 }
 
 @media (min-width: 501px) and (max-width: 768px) {}

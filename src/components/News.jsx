@@ -43,7 +43,6 @@ export default function News(props) {
 
   return (
     <div className="article_container">
-      {console.log(data)}
       {articlesWithImage.map((article, index) => (
         <div key={index} className="article">
           <a href={article.url} target="_blank" rel="noopener noreferrer">
