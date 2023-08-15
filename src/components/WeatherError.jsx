@@ -1,5 +1,5 @@
 import React from 'react'
-import WeatherError from "../img/weatherError.gif"
+import WeatherError from "../img/Storm.gif"
 import "../styles/WeatherError.css"
 
 export default function Weather_Error() {
