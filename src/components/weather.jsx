@@ -8,8 +8,8 @@ import {
   faWater,
   faWind,
 } from "@fortawesome/free-solid-svg-icons";
-import WeatherLoading from "../components/WeatherLoading";
-import Weather_Error from "../components/WeatherError";
+import WeatherLoading from "./WeatherLoading";
+import Weather_Error from "./WeatherError";
 import "../styles/weather.css";
 
 export default function Weather() {
@@ -22,7 +22,7 @@ export default function Weather() {
     refetch: refetchWeatherData,
   } = useQuery(["weather"], () => {
     return Axios.get(
-      `https://api.openweathermap.org/data/2.5/weather?q=${weatherCity}&appid=e534d6cec835d28e1523f5ffd15c9108&units=metric`
+      `https://api.openweathermap.org/data/2.5/weather?q=${weatherCity}&appid=APIKEY&units=metric`
     ).then((resp) => resp);
   });
 

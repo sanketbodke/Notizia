@@ -13,7 +13,7 @@ export default function News(props) {
     refetch,
   } = useQuery(["news", props.category], () => {
     return Axios.get(
-      `https://newsapi.org/v2/top-headlines?category=${props.category}&country=in&apiKey=0a896ee86f6b404b8a695b5e43449f30`
+      `https://newsapi.org/v2/top-headlines?category=${props.category}&country=in&apiKey=APIKEY`
     ).then((resp) => resp);
   });
 

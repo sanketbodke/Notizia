@@ -1,7 +1,7 @@
 import React, { useState, createContext } from "react";
 import home from "../pages/home";
 import News from "./News";
-import Weather from "../pages/weather";
+import Weather from "../components/weather";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 
